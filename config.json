@@ -1,0 +1,22 @@
+{
+    "debug": false,
+    "message": {
+        "content": "@everyone rip bozo",
+        "username": "TaxMachine on top",
+        "avatar_url": "https://cdn.discordapp.com/attachments/993833713421013052/1082369422167130112/Animal-Monkey-PNG-Isolated-Photo.png",
+        "tts": false,
+        "embeds": [
+            {
+                "title": "lmao you did it again",
+                "description": "why are you so stupid? Fucking skid",
+                "color": 16711680,
+                "author": {
+                    "name": "wiga#0184",
+                    "url": "https://github.com/TaxMachine",
+                    "icon_url": "https://cdn.discordapp.com/attachments/993833713421013052/1082369422167130112/Animal-Monkey-PNG-Isolated-Photo.png"
+                },
+                "timestamp": "2020-11-11T11:11:11.111Z"
+            }
+        ]
+    }
+}
