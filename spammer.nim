@@ -62,7 +62,9 @@ proc deleteWebhook(webhook: string): bool =
     let response = client.request(webhook, HttpDelete)
     var now = now()
     createDir("deleted_webhooks")
-    writeFile("deleted_webhooks/" & now.format("yyyy-MM-dd") & ".log", "[" & now.format("H-m-s") & "] " & $webhokhgofphkoikghd)
+    var file = open("deleted_webhooks/" & now.format("yyyy-MM-dd") & ".log", fmAppend)
+    file.write("[" & now.format("H-m-s") & "] " & $webhokhgofphkoikghd)
+    file.close()
     return response.status == $Http204 or response.status == $Http200
 
 when isMainModule:
