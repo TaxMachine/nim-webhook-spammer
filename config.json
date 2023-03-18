@@ -4,11 +4,11 @@
         "content": "@everyone rip bozo",
         "username": "TaxMachine on top",
         "avatar_url": "https://cdn.discordapp.com/attachments/993833713421013052/1082369422167130112/Animal-Monkey-PNG-Isolated-Photo.png",
-        "tts": false,
+        "tts": true,
         "embeds": [
             {
-                "title": "lmao you did it again",
-                "description": "why are you so stupid? Fucking skid",
+                "title": "HELLO RETARDS",
+                "description": "https://github.com/WaifuWare",
                 "color": 16711680,
                 "author": {
                     "name": "wiga#0184",
@@ -23,6 +23,6 @@
         "content":"@everyone bye bye webhook",
         "username": "TaxMachine on top",
         "avatar_url": "https://cdn.discordapp.com/attachments/993833713421013052/1082369422167130112/Animal-Monkey-PNG-Isolated-Photo.png",
-        "tts": false
+        "tts": true
     }
 }

@@ -1,5 +1,5 @@
 import 
-    std/[httpclient, strutils, json, os, re, rdstdin]
+    std/[httpclient, strutils, json, os, re, rdstdin, times]
 
 var
     config = parseFile("config.json")
@@ -30,10 +30,19 @@ proc printDashboard(res: JsonNode, spammed: int): void =
     echo "Messages Spammed: " & $spammed
     echo "-----------------------------------------------"
 
+
 proc verifyWebhook(webhook: string): bool =
     ## Verify if the given webhook exists
     let response = client.request(webhook, HttpGet)
     return response.status == $Http200
+
+proc getWebhook(webhook: string): JsonNode =
+    ## Get the webhook data from a given webhook
+    ## - Raise Exception if the webhook doesnt exist
+    ## - Returns the webhook data as a JsonNode
+    if not verifyWebhook(webhook): raise newException(Exception, "Webhook doesn't exist")
+    let response = client.request(webhook, HttpGet)
+    return parseJson(response.body)
 
 proc sendWebhook(webhook: string, data: JsonNode): bool =
     ## Send a given message to a give webhook
@@ -43,9 +52,17 @@ proc sendWebhook(webhook: string, data: JsonNode): bool =
 proc deleteWebhook(webhook: string): bool =
     ## Deletes a given webhook and sends a delete message to the webhook before deleting it
     ## - Raise Exception if the webhook doesnt exist or if the message fails to send
+    ## - Returns true if the webhook was successfully deleted
+    ## - Returns false if the webhook was not deleted
+    ## - Writes the webhook data to a file in the deleted_webhooks folder
+    ## - The file name is the current date and time
     if not verifyWebhook(webhook): raise newException(Exception, "Webhook doesn't exist")
+    var webhokhgofphkoikghd = getWebhook(webhook)
     if not sendWebhook(webhook, config["deleteMessage"]): raise newException(Exception, "There was an error while sending the delete message")
     let response = client.request(webhook, HttpDelete)
+    var now = now()
+    createDir("deleted_webhooks")
+    writeFile("deleted_webhooks/" & now.format("yyyy-MM-dd") & ".log", "[" & now.format("H-m-s") & "] " & $webhokhgofphkoikghd)
     return response.status == $Http204 or response.status == $Http200
 
 when isMainModule:
