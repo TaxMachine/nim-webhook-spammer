@@ -21,6 +21,8 @@ proc printDashboard(res: JsonNode, spammed: int): void =
     echo "WaifuWare Webhook Spammer"
     echo "-----------------------------------------------"
     echo "Webhook Name: " & res["name"].getStr
+    echo "Webhook Author: " & res["user"]["username"].getStr
+    echo "Webhook Author ID: " & res["user"]["id"].getStr
     echo "Webhook Channel: " & res["channel_id"].getStr
     echo "Webhook Guild: " & res["guild_id"].getStr
     echo "Webhook ID: " & res["id"].getStr
@@ -56,7 +58,7 @@ when isMainModule:
         echo "[-] Please enter a valid webhook"
         quit(0)
 
-    echo "Checking if " & webhook.split("/")[4] & "/" & webhook.split("/")[5] & " is valid"
+    echo "Checking if " & webhook.split("/")[5] & "/" & webhook.split("/")[6] & " is valid"
     let response = client.request(webhook, HttpGet)
     if verifyWebhook(webhook):
         echo "[+] Webhook is valid"
