@@ -21,8 +21,6 @@ proc printDashboard(res: JsonNode, spammed: int): void =
     echo "WaifuWare Webhook Spammer"
     echo "-----------------------------------------------"
     echo "Webhook Name: " & res["name"].getStr
-    echo "Webhook Author: " & res["user"]["username"].getStr
-    echo "Webhook Author ID: " & res["user"]["id"].getStr
     echo "Webhook Channel: " & res["channel_id"].getStr
     echo "Webhook Guild: " & res["guild_id"].getStr
     echo "Webhook ID: " & res["id"].getStr
